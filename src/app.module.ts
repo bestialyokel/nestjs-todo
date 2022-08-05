@@ -21,12 +21,9 @@ import { TodoModule } from './todo/todo.module';
 		}),
 		TypeOrmModule.forRoot({
 			type: 'postgres',
-			host: 'postgres',
-			port: 5432,
-			username: 'oblako_user',
-			password: 'password',
-			database: 'oblako_db',
-			entities: [Category, Todo]
+			host: process.env.DATABASE_URL,
+			entities: [Category, Todo],
+			synchronize: false
 		})
 	],
     controllers: [AppController],
