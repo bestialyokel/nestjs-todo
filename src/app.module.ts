@@ -21,7 +21,10 @@ import { TodoModule } from './todo/todo.module';
 		}),
 		TypeOrmModule.forRoot({
 			type: 'postgres',
-			host: process.env.DATABASE_URL,
+			url: process.env.DATABASE_URL,
+			ssl: { 
+				rejectUnauthorized: false 
+			},
 			entities: [Category, Todo],
 			synchronize: false
 		})
