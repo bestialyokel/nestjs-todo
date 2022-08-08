@@ -15,8 +15,8 @@ export class TodoResolver {
         protected categoryService: CategoryService ) {}
     
     @Mutation(returns => TodoDto)
-    async createTodo(@Args('input') createData: CreateTodoDto ) {
-        return this.todoService.createTodo(createData);
+    async createTodo(@Args({name: 'input', type: () => CreateTodoDto}) createTodoDto: CreateTodoDto ) {
+        return this.todoService.createTodo(createTodoDto);
     }
 
     @ResolveField(returns => CategoryDto)
